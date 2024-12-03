@@ -8,11 +8,11 @@ class HistorianHysteriaTest {
 
     @Test
     fun testPart1() {
-        assertEquals(11, part1(readResource("day01/input.txt")))
+        assertEquals(11, part1(readResource("day01/testInput.txt")))
     }
 
     @Test
     fun testPart2() {
-        assertEquals(31, part2(readResource("day01/input.txt")))
+        assertEquals(31, part2(readResource("day01/testInput.txt")))
     }
 }
