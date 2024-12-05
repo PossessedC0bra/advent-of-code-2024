@@ -10,9 +10,9 @@ fun main() {
 }
 
 fun part1(input: String): Int {
-    val mappings = input
+    val numberToNumbersThatMustAppearAfterMapping = input
         .lines()
-        .takeWhile { it.isEmpty() }
+        .takeWhile { it.isNotEmpty() }
         .map {
             val numbers = it.split('|').map { it.toInt() }
             numbers[0] to numbers[1]
@@ -22,19 +22,18 @@ fun part1(input: String): Int {
     val reports = input.lines()
         .dropWhile { it.isNotEmpty() }
         .drop(1)
-        .map { it.split(',').map { it.toInt() } }
+        .map { line -> line.split(',').map { it.toInt() } }
 
     var result = 0
-    for (report in reports) {
-        run reports@{
-            for (i in report.indices) {
-                val num = report[i]
-                if (!mappings.getOrElse(num) { listOf<Int>() }.any { report.take(i).contains(num) }) {
-                    return@reports
+    reports.forEach { report ->
+        for (i in report.indices) {
+            numberToNumbersThatMustAppearAfterMapping[report[i]]?.let { numbersMustAppearAfterX ->
+                if (report.take(i).any { numbersMustAppearAfterX.contains(it) }) {
+                    return@forEach
                 }
             }
-            result += report[report.count() / 2]
         }
+        result += report[report.size / 2]
     }
     return result
 }
