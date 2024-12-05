@@ -13,6 +13,6 @@ class PrintQueueTest {
 
     @Test
     fun testPart2() {
-        assertEquals(143, part2(readResource("day05/testInput.txt")))
+        assertEquals(123, part2(readResource("day05/testInput.txt")))
     }
 }
