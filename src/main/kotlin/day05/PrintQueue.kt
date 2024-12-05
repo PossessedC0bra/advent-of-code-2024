@@ -9,71 +9,49 @@ fun main() {
     println("Part 2: ${part2(input)}")
 }
 
-fun part1(input: String): Int {
-    val numberToNumbersThatMustAppearAfterMapping = input
-        .lines()
-        .takeWhile { it.isNotEmpty() }
-        .map {
-            val numbers = it.split('|').map { it.toInt() }
-            numbers[0] to numbers[1]
+fun part1(input: String): Int =
+    parsePageOrderRulesAndManuals(input)
+        .let { (pageOrderRules, safetyManuals) ->
+            return safetyManuals
+                .filter { isManualValid(it, pageOrderRules) }
+                .sumOf { it.middle() }
         }
-        .groupBy({ it.first }) { it.second }
 
-    val safetyManuals = input.lines()
-        .dropWhile { it.isNotEmpty() }
-        .drop(1)
-        .map { line -> line.split(',').map { it.toInt() } }
-
-    var result = 0
-    safetyManuals.forEach { manual ->
-
-        result += manual[manual.size / 2]
-    }
-    return result
-}
-
-fun part2(input: String): Int = parseInput(input).let { (pageOrderRules, safetyManuals) ->
-    safetyManuals
-        .filter { isManualValid(it, pageOrderRules) }
-        .map { fixManual(it, pageOrderRules) }
-        .map { it.middle() }
-        .sum()
-}
-
-fun parseInput(input: String): Pair<Map<Int, Set<Int>>, List<List<Int>>> {
-    val numberToNumbersThatMustAppearAfterMapping = input
-        .lines()
-        .takeWhile { it.isNotEmpty() }
-        .map {
-            val numbers = it.split('|').map { it.toInt() }
-            numbers[0] to numbers[1]
+fun part2(input: String): Int =
+    parsePageOrderRulesAndManuals(input)
+        .let { (pageOrderRules, safetyManuals) ->
+            safetyManuals
+                .filterNot { isManualValid(it, pageOrderRules) }
+                .map { fixManual(it, pageOrderRules) }
+                .sumOf { it.middle() }
         }
-        .groupBy({ it.first }) { it.second }
 
-    val safetyManuals = input.lines()
-        .dropWhile { it.isNotEmpty() }
-        .drop(1)
-        .map { line -> line.split(',').map { it.toInt() } }
+fun parsePageOrderRulesAndManuals(input: String): Pair<Map<Int, Set<Int>>, List<List<Int>>> =
+    input.split("\n\n")
+        .let { (rulesString, manualsString) ->
+            val pageOrderRules: Map<Int, Set<Int>> = rulesString
+                .lines()
+                .map { it.split('|').map { it.toInt() }.let { (num, comesAfter) -> num to comesAfter } }
+                .groupBy({ it.first }, { it.second })
+                .mapValues { it.value.toSet() }
 
-    numberToNumbersThatMustAppearAfterMapping to safetyManuals
-}
+            val safetyManuals = manualsString
+                .lines()
+                .map { line -> line.split(',').map { it.toInt() } }
 
-fun isManualValid(manual: List<Int>, pageOrderRules: Map<Int, Set<Int>>): Boolean {
-    for (i in manual.indices) {
-        pageOrderRules[manual[i]]?.let { numbersMustAppearAfterX ->
-            if (manual.take(i).any { numbersMustAppearAfterX.contains(it) }) {
-                return false
-            }
+            pageOrderRules to safetyManuals
+        }
+
+fun isManualValid(manual: List<Int>, pageOrderRules: Map<Int, Set<Int>>): Boolean =
+    manual.indices.all { i -> manual.subList(0, i).none { pageOrderRules[manual[i]]?.contains(it) == true } }
+
+fun fixManual(manual: List<Int>, pageOrderRules: Map<Int, Set<Int>>): List<Int> =
+    manual.sortedWith { a, b ->
+        when {
+            pageOrderRules[b]?.contains(a) == true -> -1
+            else -> 1
         }
     }
-
-    return true
-}
-
-fun fixManual(manual: List<Int>): List<Int> {
-    TODO("Implement")
-    return manual
-}
 
 fun <T> List<T>.middle(): T {
     return this[this.size / 2]
