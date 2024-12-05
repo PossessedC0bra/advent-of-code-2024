@@ -19,23 +19,62 @@ fun part1(input: String): Int {
         }
         .groupBy({ it.first }) { it.second }
 
-    val reports = input.lines()
+    val safetyManuals = input.lines()
         .dropWhile { it.isNotEmpty() }
         .drop(1)
         .map { line -> line.split(',').map { it.toInt() } }
 
     var result = 0
-    reports.forEach { report ->
-        for (i in report.indices) {
-            numberToNumbersThatMustAppearAfterMapping[report[i]]?.let { numbersMustAppearAfterX ->
-                if (report.take(i).any { numbersMustAppearAfterX.contains(it) }) {
-                    return@forEach
-                }
-            }
-        }
-        result += report[report.size / 2]
+    safetyManuals.forEach { manual ->
+
+        result += manual[manual.size / 2]
     }
     return result
 }
 
-fun part2(input: String): Int = 0
+fun part2(input: String): Int = parseInput(input).let { (pageOrderRules, safetyManuals) ->
+    safetyManuals
+        .filter { isManualValid(it, pageOrderRules) }
+        .map { fixManual(it, pageOrderRules) }
+        .map { it.middle() }
+        .sum()
+}
+
+fun parseInput(input: String): Pair<Map<Int, Set<Int>>, List<List<Int>>> {
+    val numberToNumbersThatMustAppearAfterMapping = input
+        .lines()
+        .takeWhile { it.isNotEmpty() }
+        .map {
+            val numbers = it.split('|').map { it.toInt() }
+            numbers[0] to numbers[1]
+        }
+        .groupBy({ it.first }) { it.second }
+
+    val safetyManuals = input.lines()
+        .dropWhile { it.isNotEmpty() }
+        .drop(1)
+        .map { line -> line.split(',').map { it.toInt() } }
+
+    numberToNumbersThatMustAppearAfterMapping to safetyManuals
+}
+
+fun isManualValid(manual: List<Int>, pageOrderRules: Map<Int, Set<Int>>): Boolean {
+    for (i in manual.indices) {
+        pageOrderRules[manual[i]]?.let { numbersMustAppearAfterX ->
+            if (manual.take(i).any { numbersMustAppearAfterX.contains(it) }) {
+                return false
+            }
+        }
+    }
+
+    return true
+}
+
+fun fixManual(manual: List<Int>): List<Int> {
+    TODO("Implement")
+    return manual
+}
+
+fun <T> List<T>.middle(): T {
+    return this[this.size / 2]
+}
