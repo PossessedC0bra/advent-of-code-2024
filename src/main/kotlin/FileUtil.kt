@@ -1,3 +1,5 @@
-fun readResource(path: String) = String(getResourceAsStream(path)!!.readAllBytes())
+import java.io.InputStream
 
-fun getResourceAsStream(path: String) = object {}.javaClass.getResourceAsStream(path)
+fun readResource(path: String): String = String(getResourceAsStream(path)!!.readAllBytes())
+
+fun getResourceAsStream(path: String): InputStream? = object {}.javaClass.getResourceAsStream(path)
