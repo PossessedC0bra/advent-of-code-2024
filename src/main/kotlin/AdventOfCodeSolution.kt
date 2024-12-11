@@ -20,15 +20,15 @@ interface AdventOfCodeSolution<T> {
         val startPart1TimeMark = TimeSource.Monotonic.markNow()
         val part1Output = part1(part1Input)
         val part1Duration = startPart1TimeMark.elapsedNow()
+        println("Part 1: $part1Output (${part1Duration.toHmsString()})")
 
         val part2Input = readResource(part2InputFileName)
         // exclude file read time from the duration
         val startPart2TimeMark = TimeSource.Monotonic.markNow()
         val part2Output = part2(part2Input)
         val part2Duration = startPart2TimeMark.elapsedNow()
-
-        println("Part 1: $part1Output (${part1Duration.toHmsString()})")
         println("Part 2: $part2Output (${part2Duration.toHmsString()})")
+
         println()
     }
 
