@@ -9,6 +9,7 @@ import day08.ResonantCollinearitySolution
 import day09.DiskFragmenterSolution
 import day10.HoofItSolution
 import day11.PlutonianPebblesSolution
+import day12.GardenGroups
 
 object AdventOfCodeSolutionFactory {
 
@@ -24,6 +25,7 @@ object AdventOfCodeSolutionFactory {
         9 -> DiskFragmenterSolution
         10 -> HoofItSolution
         11 -> PlutonianPebblesSolution
+        12 -> GardenGroups
 
         else -> throw IllegalArgumentException("Day $day is not implemented")
     }
