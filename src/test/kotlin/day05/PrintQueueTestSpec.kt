@@ -9,7 +9,8 @@ object PrintQueueTestSpec : AdventOfCodeSolutionTestSpec<Int> {
 
     override val classUnderTest: AdventOfCodeSolution<Int> = PrintQueueSolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         47|53
         97|13
         97|61
@@ -39,8 +40,9 @@ object PrintQueueTestSpec : AdventOfCodeSolutionTestSpec<Int> {
         61,13,29
         97,13,75,29,47
     """.trimIndent()
-    override val expectedPart1Output: Int = 143
+    )
+    override val expectedPart1Outputs: List<Int> = listOf(143)
 
-    override val expectedPart2Output: Int = 123
+    override val expectedPart2Outputs: List<Int> = listOf(123)
 
 }

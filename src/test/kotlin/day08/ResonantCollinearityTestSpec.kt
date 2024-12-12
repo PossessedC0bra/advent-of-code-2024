@@ -9,7 +9,8 @@ object ResonantCollinearityTestSpec : AdventOfCodeSolutionTestSpec<Long> {
 
     override val classUnderTest: AdventOfCodeSolution<Long> = ResonantCollinearitySolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         ............
         ........0...
         .....0......
@@ -23,8 +24,9 @@ object ResonantCollinearityTestSpec : AdventOfCodeSolutionTestSpec<Long> {
         ............
         ............
     """.trimIndent()
-    override val expectedPart1Output: Long = 14
+    )
+    override val expectedPart1Outputs: List<Long> = listOf(14)
 
-    override val expectedPart2Output: Long = 34
+    override val expectedPart2Outputs: List<Long> = listOf(34)
 
 }

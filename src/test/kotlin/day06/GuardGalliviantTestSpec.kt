@@ -9,7 +9,8 @@ object GuardGalliviantTestSpec : AdventOfCodeSolutionTestSpec<Int> {
 
     override val classUnderTest: AdventOfCodeSolution<Int> = GuardGallivantSolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         ....#.....
         .........#
         ..........
@@ -21,8 +22,9 @@ object GuardGalliviantTestSpec : AdventOfCodeSolutionTestSpec<Int> {
         #.........
         ......#...
     """.trimIndent()
-    override val expectedPart1Output: Int = 41
+    )
+    override val expectedPart1Outputs: List<Int> = listOf(41)
 
-    override val expectedPart2Output: Int = 6
+    override val expectedPart2Outputs: List<Int> = listOf(6)
 
 }

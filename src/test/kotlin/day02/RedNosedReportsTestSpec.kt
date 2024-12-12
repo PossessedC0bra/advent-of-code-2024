@@ -9,7 +9,8 @@ object RedNosedReportsTestSpec : AdventOfCodeSolutionTestSpec<Int> {
 
     override val classUnderTest: AdventOfCodeSolution<Int> = RedNosedReportsSolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         7 6 4 2 1
         1 2 7 8 9
         9 7 6 2 1
@@ -17,9 +18,9 @@ object RedNosedReportsTestSpec : AdventOfCodeSolutionTestSpec<Int> {
         8 6 4 4 1
         1 3 6 7 9
     """.trimIndent()
+    )
+    override val expectedPart1Outputs: List<Int> = listOf(2)
 
-    override val expectedPart1Output: Int = 2
-
-    override val expectedPart2Output: Int = 4
+    override val expectedPart2Outputs: List<Int> = listOf(4)
 
 }

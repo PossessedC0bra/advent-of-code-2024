@@ -9,7 +9,8 @@ object BridgeRepairTestSpec : AdventOfCodeSolutionTestSpec<Long> {
 
     override val classUnderTest: AdventOfCodeSolution<Long> = BridgeRepairSolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         190: 10 19
         3267: 81 40 27
         83: 17 5
@@ -20,8 +21,9 @@ object BridgeRepairTestSpec : AdventOfCodeSolutionTestSpec<Long> {
         21037: 9 7 18 13
         292: 11 6 16 20
     """.trimIndent()
-    override val expectedPart1Output: Long = 3_749
+    )
+    override val expectedPart1Outputs: List<Long> = listOf(3_749)
 
-    override val expectedPart2Output: Long = 11_387
+    override val expectedPart2Outputs: List<Long> = listOf(11_387)
 
 }

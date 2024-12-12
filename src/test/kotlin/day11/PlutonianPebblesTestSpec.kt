@@ -10,15 +10,12 @@ object PlutonianPebblesTestSpec : AdventOfCodeSolutionTestSpec<Long> {
 
     override val classUnderTest: AdventOfCodeSolution<Long> = PlutonianPebblesSolution
 
-    override val part1TestInput: String = "125 17"
-    override val expectedPart1Output: Long = 55_312
+    override val part1TestInputs: List<String> = listOf("125 17")
+    override val expectedPart1Outputs: List<Long> = listOf(55_312)
 
     // no test value provided
-    override val expectedPart2Output: Long = 0
+    override val expectedPart2Outputs: List<Long> = listOf(0)
 
     @Ignore
-    override fun testPart2() {
-        super.testPart2()
-    }
-
+    override fun testPart2() = super.testPart2()
 }

@@ -9,7 +9,8 @@ object CeresSearchTestSpec : AdventOfCodeSolutionTestSpec<Int> {
 
     override val classUnderTest: AdventOfCodeSolution<Int> = CeresSearchSolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         MMMSXXMASM
         MSAMXMSMSA
         AMXSXMAAMM
@@ -21,8 +22,9 @@ object CeresSearchTestSpec : AdventOfCodeSolutionTestSpec<Int> {
         MAMMMXMMMM
         MXMXAXMASX
     """.trimIndent()
-    override val expectedPart1Output: Int = 18
+    )
+    override val expectedPart1Outputs: List<Int> = listOf(18)
 
-    override val expectedPart2Output: Int = 9
+    override val expectedPart2Outputs: List<Int> = listOf(9)
 
 }

@@ -9,7 +9,8 @@ object HoofItTestSpec : AdventOfCodeSolutionTestSpec<Long> {
 
     override val classUnderTest: AdventOfCodeSolution<Long> = HoofItSolution
 
-    override val part1TestInput: String = """
+    override val part1TestInputs: List<String> = listOf(
+        """
         89010123
         78121874
         87430965
@@ -19,7 +20,8 @@ object HoofItTestSpec : AdventOfCodeSolutionTestSpec<Long> {
         01329801
         10456732
     """.trimIndent()
-    override val expectedPart1Output: Long = 36
+    )
+    override val expectedPart1Outputs: List<Long> = listOf(36)
 
-    override val expectedPart2Output: Long = 81
+    override val expectedPart2Outputs: List<Long> = listOf(81)
 }
