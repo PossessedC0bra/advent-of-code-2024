@@ -21,6 +21,6 @@ interface AdventOfCodeSolutionTestSpec<Out> {
     fun testPart2(): List<DynamicTest> = part2TestInputs.zip(expectedPart2Outputs)
         .mapIndexed { idx, (input, output) -> createDynamicTest(idx, input, classUnderTest::part2, output) }
 
-    private fun createDynamicTest(idx: Int, input: String, functionToTest: (String) -> Out, output: Out) =
+    fun createDynamicTest(idx: Int, input: String, functionToTest: (String) -> Out, output: Out) =
         DynamicTest.dynamicTest("Test ${idx + 1}") { assertEquals(output, functionToTest(input)) }
 }
