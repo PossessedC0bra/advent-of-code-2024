@@ -12,6 +12,7 @@ import day11.PlutonianPebblesSolution
 import day12.GardenGroups
 import day13.ClawContraptionSolution
 import day14.RestroomRedoubtSolution
+import day15.WarehouseWoesSolution
 
 object AdventOfCodeSolutionFactory {
 
@@ -30,6 +31,7 @@ object AdventOfCodeSolutionFactory {
         12 -> GardenGroups
         13 -> ClawContraptionSolution
         14 -> RestroomRedoubtSolution
+        15 -> WarehouseWoesSolution
 
         else -> throw IllegalArgumentException("Day $day is not implemented")
     }
