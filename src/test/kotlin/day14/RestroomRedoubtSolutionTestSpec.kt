@@ -3,9 +3,6 @@ package day14
 import AdventOfCodeSolution
 import AdventOfCodeSolutionTestSpec
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.DynamicTest
-import org.junit.jupiter.api.TestFactory
-import kotlin.test.assertEquals
 
 @DisplayName("Day 14: Restroom Redoubt")
 object RestroomRedoubtSolutionTestSpec : AdventOfCodeSolutionTestSpec<Long> {
@@ -29,17 +26,8 @@ object RestroomRedoubtSolutionTestSpec : AdventOfCodeSolutionTestSpec<Long> {
         """.trimIndent()
     )
     override val expectedPart1Outputs: List<Long> = listOf(12)
-
-    @TestFactory
-    override fun testPart1(): List<DynamicTest> = part1TestInputs.zip(expectedPart1Outputs)
-        .mapIndexed { idx, (i, o) ->
-            DynamicTest.dynamicTest("Test ${idx + 1}") {
-                assertEquals(
-                    o,
-                    RestroomRedoubtSolution.part1(i, 11, 7, 100)
-                )
-            }
-        }
+    override fun functionToTestPart1(): (String) -> Long =
+        { (classUnderTest as RestroomRedoubtSolution).part1(it, 11, 7, 100) }
 
     override val expectedPart2Outputs: List<Long> = listOf()
 }

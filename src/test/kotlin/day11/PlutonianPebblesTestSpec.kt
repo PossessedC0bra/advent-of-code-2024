@@ -3,7 +3,6 @@ package day11
 import AdventOfCodeSolution
 import AdventOfCodeSolutionTestSpec
 import org.junit.jupiter.api.DisplayName
-import kotlin.test.Ignore
 
 @DisplayName("Day 11: Plutionian Pebbles")
 object PlutonianPebblesTestSpec : AdventOfCodeSolutionTestSpec<Long> {
@@ -14,8 +13,5 @@ object PlutonianPebblesTestSpec : AdventOfCodeSolutionTestSpec<Long> {
     override val expectedPart1Outputs: List<Long> = listOf(55_312)
 
     // no test value provided
-    override val expectedPart2Outputs: List<Long> = listOf(0)
-
-    @Ignore
-    override fun testPart2() = super.testPart2()
+    override val expectedPart2Outputs: List<Long> = listOf()
 }
