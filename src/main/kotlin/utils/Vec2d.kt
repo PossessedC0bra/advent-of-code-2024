@@ -1,5 +1,7 @@
 package utils
 
+import kotlin.math.abs
+
 //  ___       _ __     __        ____     _
 // |_ _|_ __ | |\ \   / /__  ___|___ \ __| |
 //  | || '_ \| __\ \ / / _ \/ __| __) / _` |
@@ -16,6 +18,8 @@ data class IntVec2d(val x: Int, val y: Int) {
     operator fun times(b: Int) = IntVec2d(x * b, y * b)
 
     operator fun div(b: Int) = IntVec2d(x / b, y / b)
+
+    fun manhattenDistance(other: IntVec2d) = abs(x - other.x) + abs(y - other.y)
 
     fun wrap(width: Int, height: Int): IntVec2d {
         val wrappedX = x % width
@@ -49,6 +53,8 @@ data class LongVec2d(val x: Long, val y: Long) {
     operator fun times(b: Int) = LongVec2d(x * b, y * b)
 
     operator fun div(b: Int) = LongVec2d(x / b, y / b)
+
+    fun manhattenDistance(other: LongVec2d) = abs(x - other.x) + abs(y - other.y)
 
     fun wrap(width: Int, height: Int): LongVec2d {
         val wrappedX = x % width
