@@ -32,9 +32,9 @@ interface AdventOfCodeSolution<T> {
         println()
     }
 
-    fun part1(input: String): T
+    fun part1(input: String): Any
 
-    fun part2(input: String): T
+    fun part2(input: String): Any
 }
 
 fun Duration.toHmsString(): String = toComponents { minutes, seconds, nanoseconds ->
