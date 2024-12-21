@@ -9,13 +9,14 @@ import day08.ResonantCollinearitySolution
 import day09.DiskFragmenterSolution
 import day10.HoofItSolution
 import day11.PlutonianPebblesSolution
-import day12.GardenGroups
+import day12.GardenGroupsSolution
 import day13.ClawContraptionSolution
 import day14.RestroomRedoubtSolution
 import day15.WarehouseWoesSolution
 import day16.ReindeerMazeSolution
 import day17.ChronospatialComputerSolution
 import day18.RamRunSolution
+import day19.LinenLayoutSolution
 
 object AdventOfCodeSolutionFactory {
 
@@ -31,13 +32,14 @@ object AdventOfCodeSolutionFactory {
         9 -> DiskFragmenterSolution
         10 -> HoofItSolution
         11 -> PlutonianPebblesSolution
-        12 -> GardenGroups
+        12 -> GardenGroupsSolution
         13 -> ClawContraptionSolution
         14 -> RestroomRedoubtSolution
         15 -> WarehouseWoesSolution
         16 -> ReindeerMazeSolution
         17 -> ChronospatialComputerSolution
         18 -> RamRunSolution
+        19 -> LinenLayoutSolution
 
         else -> throw IllegalArgumentException("Day $day is not implemented")
     }
